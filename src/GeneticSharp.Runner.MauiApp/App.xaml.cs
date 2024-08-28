@@ -1,12 +1,9 @@
-﻿namespace GeneticSharp.Runner.MauiApp
-{
-public partial class App : Application
-{
-    public App()
-    {
-        InitializeComponent();
+﻿namespace GeneticSharp.Runner.MauiApp {
+public partial class App : Application {
+  public App() {
+    InitializeComponent();
 
-        MainPage = new AppShell();
-    }
+    MainPage = new AppShell();
+  }
 }
 }

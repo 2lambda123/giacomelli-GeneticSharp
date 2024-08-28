@@ -1,20 +1,20 @@
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Reflection;
-//using Gtk;
+// using System;
+// using System.Collections.Generic;
+// using System.Linq;
+// using System.Reflection;
+// using Gtk;
 
-//namespace GeneticSharp.Runner.MauiApp
+// namespace GeneticSharp.Runner.MauiApp
 //{
-//    /// <summary>
-//    /// A property editor to genetic algorithm operators.
-//    /// </summary>
-//    public partial class PropertyEditor : VerticalStackLayout
-//    {
-//        #region Fields
-//        private Type m_objectType;
-//        private Dictionary<PropertyInfo, IView> m_widgetMap;
-//        #endregion
+//     /// <summary>
+//     /// A property editor to genetic algorithm operators.
+//     /// </summary>
+//     public partial class PropertyEditor : VerticalStackLayout
+//     {
+//         #region Fields
+//         private Type m_objectType;
+//         private Dictionary<PropertyInfo, IView> m_widgetMap;
+//         #endregion
 
 //        #region Constructors
 //        public PropertyEditor(Type objectType, object objectInstance)
@@ -22,7 +22,8 @@
 
 //            m_objectType = objectType;
 
-//            if (objectInstance == null || objectInstance.GetType() != objectType)
+//            if (objectInstance == null || objectInstance.GetType() !=
+//            objectType)
 //            {
 //                ObjectInstance = Activator.CreateInstance(objectType);
 //            }
@@ -48,7 +49,9 @@
 
 //        static PropertyInfo[] GetObjectProperties(Type objectType)
 //        {
-//            return objectType.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly).Where(p => p.CanWrite).ToArray();
+//            return objectType.GetProperties(BindingFlags.Instance |
+//            BindingFlags.Public | BindingFlags.DeclaredOnly).Where(p =>
+//            p.CanWrite).ToArray();
 //        }
 
 //        void BindToWidget()
@@ -75,7 +78,8 @@
 //                    toggle.Active = Convert.ToBoolean(value);
 //                    input = toggle;
 //                }
-//                else if (p.PropertyType == typeof(float) || p.PropertyType == typeof(double))
+//                else if (p.PropertyType == typeof(float) || p.PropertyType ==
+//                typeof(double))
 //                {
 //                    var horizontalScale = new HScale(0, 1, 0.05);
 
@@ -115,25 +119,30 @@
 //            {
 //                if (m.Key.PropertyType == typeof(int))
 //                {
-//                    m.Key.SetValue(ObjectInstance, ((SpinButton)m.Value).ValueAsInt, new object[0]);
+//                    m.Key.SetValue(ObjectInstance,
+//                    ((SpinButton)m.Value).ValueAsInt, new object[0]);
 //                }
 //                else if (m.Key.PropertyType == typeof(bool))
 //                {
-//                    m.Key.SetValue(ObjectInstance, ((ToggleButton)m.Value).Active, new object[0]);
+//                    m.Key.SetValue(ObjectInstance,
+//                    ((ToggleButton)m.Value).Active, new object[0]);
 //                }
 //                else if (m.Key.PropertyType == typeof(float))
 //                {
-//                    m.Key.SetValue(ObjectInstance, Convert.ToSingle(((HScale)m.Value).Value), new object[0]);
+//                    m.Key.SetValue(ObjectInstance,
+//                    Convert.ToSingle(((HScale)m.Value).Value), new object[0]);
 //                }
 //                else if (m.Key.PropertyType == typeof(double))
 //                {
-//                    m.Key.SetValue(ObjectInstance, ((HScale)m.Value).Value, new object[0]);
+//                    m.Key.SetValue(ObjectInstance, ((HScale)m.Value).Value,
+//                    new object[0]);
 //                }
 //                else if (m.Key.PropertyType == typeof(TimeSpan))
 //                {
 //                    var hbox = (HBox)m.Value;
 //                    var seconds = ((SpinButton)hbox.Children[0]).Value;
-//                    m.Key.SetValue(ObjectInstance, TimeSpan.FromSeconds(seconds), new object[0]);
+//                    m.Key.SetValue(ObjectInstance,
+//                    TimeSpan.FromSeconds(seconds), new object[0]);
 //                }
 //            }
 //        }

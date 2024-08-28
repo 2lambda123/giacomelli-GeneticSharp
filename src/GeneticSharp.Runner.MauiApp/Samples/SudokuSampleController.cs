@@ -1,11 +1,13 @@
-﻿//using System.ComponentModel;
-//using GeneticSharp.Extensions;
+﻿// using System.ComponentModel;
+// using GeneticSharp.Extensions;
 
-//namespace GeneticSharp.Runner.MauiApp.Samples
+// namespace GeneticSharp.Runner.MauiApp.Samples
 //{
 
 //    /// <summary>
-//    /// This enumeration represents the types of Genetics to represent a Sudoku solutions. There are 2 families: those with genes for Sudoku cells, and those with genes for permutations of a [1..9] row.
+//    /// This enumeration represents the types of Genetics to represent a
+//    Sudoku solutions. There are 2 families: those with genes for Sudoku cells,
+//    and those with genes for permutations of a [1..9] row.
 //    /// </summary>
 //    public enum SudokuChromosomeType
 //    {
@@ -16,11 +18,13 @@
 //        RowsWithoutMask,
 //    }
 
-
 //    /// <summary>
 //    /// Sample controller for solving Sudokus.
-//    /// Includes 4 default games, and allows for loading additional ones from a file, supporting most file formats.
-//    /// Includes 2 different types of chromosome. One trivial with 81 genes each cell digit, and one with 9 genes for row permutations taking into account the original mask
+//    /// Includes 4 default games, and allows for loading additional ones from
+//    a file, supporting most file formats.
+//    /// Includes 2 different types of chromosome. One trivial with 81 genes
+//    each cell digit, and one with 9 genes for row permutations taking into
+//    account the original mask
 //    /// </summary>
 //    [DisplayName("Sudoku")]
 //    public class SudokuSampleController : SampleControllerBase
@@ -39,45 +43,43 @@
 
 //        }
 
-
-//        private string _ChromosomeType = nameof(SudokuChromosomeType.RowsPermutations); // The selected type of chromosome
-//        private int _nbPermutations = 2; //The number of genes per permutation for random permutations
-//        private int _nbSudokus = 5; //The number of Sudokus to generate from random permutations
-//        private HBox _nbPermsHBox;
-//        private bool _multipleChromosome = false; // Do we evolve several sudokus/sub-chromosomes per individual solution
-//        private int _nbChromosomes = 2; //Nb of sudokus per individual if multiple
+//        private string _ChromosomeType =
+//        nameof(SudokuChromosomeType.RowsPermutations); // The selected type of
+//        chromosome private int _nbPermutations = 2; //The number of genes per
+//        permutation for random permutations private int _nbSudokus = 5; //The
+//        number of Sudokus to generate from random permutations private HBox
+//        _nbPermsHBox; private bool _multipleChromosome = false; // Do we
+//        evolve several sudokus/sub-chromosomes per individual solution private
+//        int _nbChromosomes = 2; //Nb of sudokus per individual if multiple
 //        private HBox _nbChromosomesHBox;
-
-
-
-
 
 //        private IList<SudokuBoard> _sudokuList = new List<SudokuBoard>();
 //        private int _sudokuIndex;
-
-
 
 //        private SudokuBoard GetTargetSudoku()
 //        {
 //            return _sudokuList[_sudokuIndex];
 //        }
 
-
 //        public override IChromosome CreateChromosome()
 //        {
 //            return CreateChromosome(_multipleChromosome, _nbChromosomes);
 //        }
 
-//        private IChromosome CreateChromosome(bool multi, int nbChromosomes = 5)
+//        private IChromosome CreateChromosome(bool multi, int nbChromosomes =
+//        5)
 //        {
 //            if (!multi)
 //            {
 //                switch (_ChromosomeType)
 //                {
 //                    case nameof(SudokuChromosomeType.RandomRowsPermutations):
-//                        return new SudokuRandomPermutationsChromosome(GetTargetSudoku(), _nbPermutations, _nbSudokus);
+//                        return new
+//                        SudokuRandomPermutationsChromosome(GetTargetSudoku(),
+//                        _nbPermutations, _nbSudokus);
 //                    case nameof(SudokuChromosomeType.RowsPermutations):
-//                        return new SudokuPermutationsChromosome(GetTargetSudoku());
+//                        return new
+//                        SudokuPermutationsChromosome(GetTargetSudoku());
 //                    case nameof(SudokuChromosomeType.RowsWithoutMask):
 //                        return new SudokuPermutationsChromosome();
 //                    case nameof(SudokuChromosomeType.Cells):
@@ -88,26 +90,20 @@
 //            }
 //            else
 //            {
-//                return new MultipleChromosome(i => CreateChromosome(false), nbChromosomes);
+//                return new MultipleChromosome(i => CreateChromosome(false),
+//                nbChromosomes);
 //            }
-
 
 //            return null;
 
 //        }
 
-
-
 //        public override Widget CreateConfigWidget()
 //        {
 //            var container = new VBox();
 
-
-
-
 //            var fileHBox = new HBox();
 //            container.Add(fileHBox);
-
 
 //            // Sudoku index.
 //            var indexHBox = new HBox();
@@ -115,8 +111,8 @@
 //            var indexLabel = new Label { Text = "Sudoku index" };
 //            indexHBox.Add(indexLabel);
 
-//            var indexButton = new SpinButton(1, _sudokuList.Count, 1) {Value = 1};
-//            indexButton.ValueChanged += delegate
+//            var indexButton = new SpinButton(1, _sudokuList.Count, 1) {Value =
+//            1}; indexButton.ValueChanged += delegate
 //            {
 //                _sudokuIndex = (int)indexButton.Value - 1;
 
@@ -126,8 +122,8 @@
 
 //            // File support
 
-//            var selectImageButton = new Button { Label = "Load sudoku(s) file" };
-//            selectImageButton.Clicked += delegate
+//            var selectImageButton = new Button { Label = "Load sudoku(s) file"
+//            }; selectImageButton.Clicked += delegate
 //            {
 //                Gtk.FileChooserDialog filechooser =
 //            new Gtk.FileChooserDialog(
@@ -159,19 +155,17 @@
 //                    DialogFlags.Modal,
 //                    MessageType.Info,
 //                    ButtonsType.Ok,
-//                    "Accepted formats represent Sudokus on one or several lines," +
-//                    "\n with characters '.', '-', or 'X' for empty cells and digits otherwise." +
-//                    "\n Lines starting with other characters are ignored such as '#' for comments on the common sdk format.");
+//                    "Accepted formats represent Sudokus on one or several
+//                    lines," +
+//                    "\n with characters '.', '-', or 'X' for empty cells and
+//                    digits otherwise." +
+//                    "\n Lines starting with other characters are ignored such
+//                    as '#' for comments on the common sdk format.");
 //                msg.Run();
 
 //                msg.Destroy();
 //            };
 //            fileHBox.Add(helpImageButton);
-
-
-
-
-
 
 //            // Genetics selector.
 
@@ -192,9 +186,9 @@
 
 //            _nbPermsHBox = new HBox
 //            {
-//                Visible = _ChromosomeType == nameof(SudokuChromosomeType.RandomRowsPermutations)
+//                Visible = _ChromosomeType ==
+//                nameof(SudokuChromosomeType.RandomRowsPermutations)
 //            };
-
 
 //            var nbPermsLabel = new Label { Text = "Nb Permutations" };
 //            _nbPermsHBox.Add(nbPermsLabel);
@@ -222,13 +216,12 @@
 //                OnReconfigured();
 //            };
 
-
-
 //            var selectorCombo = new ComboBox(chromosomeTypes) { Active = 0 };
 //            selectorCombo.Changed += delegate
 //            {
 //                _ChromosomeType = selectorCombo.ActiveText;
-//                _nbPermsHBox.Visible = _ChromosomeType == nameof(SudokuChromosomeType.RandomRowsPermutations);
+//                _nbPermsHBox.Visible = _ChromosomeType ==
+//                nameof(SudokuChromosomeType.RandomRowsPermutations);
 //                OnReconfigured();
 //            };
 //            geneticsHBox.Add(selectorCombo);
@@ -237,7 +230,8 @@
 
 //            //Multi check
 //            var multiHBox = new HBox();
-//            var multiCheck = new CheckButton("Multi-Solutions") {Active = _multipleChromosome};
+//            var multiCheck = new CheckButton("Multi-Solutions") {Active =
+//            _multipleChromosome};
 
 //            _nbChromosomesHBox = new HBox();
 //            _nbChromosomesHBox.Spacing += 2;
@@ -272,9 +266,6 @@
 //            return container;
 //        }
 
-
-
-
 //        public override ICrossover CreateCrossover()
 //        {
 //            return new UniformCrossover();
@@ -285,7 +276,6 @@
 //            return CreateFitness(_multipleChromosome);
 //        }
 
-
 //        private IFitness CreateFitness(bool multi)
 //        {
 //            if (multi)
@@ -293,7 +283,8 @@
 //                return new MultipleFitness(CreateFitness(false));
 //            }
 
-//            if (_ChromosomeType == nameof(SudokuChromosomeType.RandomRowsPermutations))
+//            if (_ChromosomeType ==
+//            nameof(SudokuChromosomeType.RandomRowsPermutations))
 //            {
 //                return new SudokuFitness(GetTargetSudoku());
 //            }
@@ -318,16 +309,36 @@
 //            SudokuBoard sudokuBoardToDraw = null;
 //            if (population != null)
 //            {
-//                if ((population.BestChromosome is ISudokuChromosome bestChromosome))
+//                if ((population.BestChromosome is ISudokuChromosome
+//                bestChromosome))
 //                {
 //                    if (population.CurrentGeneration != null)
 //                    {
-//                        var stats = population.CurrentGeneration.Chromosomes.GroupBy(c => c.Fitness).OrderByDescending(g => g.Key).Select(g => new { Fitness = g.Key, Count = g.Count(), First = ((ISudokuChromosome)g.First()).GetSudokus().First(), Last = ((ISudokuChromosome)g.Last()).GetSudokus().First() }).ToList();
-//                        Context.WriteText($"Fitness,Count:({stats[0].Fitness},{stats[0].Count})...({stats[stats.Count / 3].Fitness},{stats[stats.Count / 3].Count})...({stats[stats.Count * 2 / 3].Fitness},{stats[stats.Count * 2 / 3].Count})...({stats[stats.Count - 1].Fitness},{stats[stats.Count - 1].Count})");
-//                        Context.WriteText($"Top: [{string.Join(",", stats[0].First.Cells.Take(9).Select(i => i.ToString()).ToArray())}] [{string.Join(",", stats[0].Last.Cells.Take(9).Select(i => i.ToString()).ToArray())}]");
-//                        if (stats.Count > 1)
+//                        var stats =
+//                        population.CurrentGeneration.Chromosomes.GroupBy(c =>
+//                        c.Fitness).OrderByDescending(g => g.Key).Select(g =>
+//                        new { Fitness = g.Key, Count = g.Count(), First =
+//                        ((ISudokuChromosome)g.First()).GetSudokus().First(),
+//                        Last =
+//                        ((ISudokuChromosome)g.Last()).GetSudokus().First()
+//                        }).ToList();
+//                        Context.WriteText($"Fitness,Count:({stats[0].Fitness},{stats[0].Count})...({stats[stats.Count
+//                        / 3].Fitness},{stats[stats.Count /
+//                        3].Count})...({stats[stats.Count * 2 /
+//                        3].Fitness},{stats[stats.Count * 2 /
+//                        3].Count})...({stats[stats.Count -
+//                        1].Fitness},{stats[stats.Count - 1].Count})");
+//                        Context.WriteText($"Top: [{string.Join(",",
+//                        stats[0].First.Cells.Take(9).Select(i =>
+//                        i.ToString()).ToArray())}] [{string.Join(",",
+//                        stats[0].Last.Cells.Take(9).Select(i =>
+//                        i.ToString()).ToArray())}]"); if (stats.Count > 1)
 //                        {
-//                            Context.WriteText($"Next: [{string.Join(",", stats[1].First.Cells.Take(9).Select(i => i.ToString()).ToArray())}] [{string.Join(",", stats[1].Last.Cells.Take(9).Select(i => i.ToString()).ToArray())}]");
+//                            Context.WriteText($"Next: [{string.Join(",",
+//                            stats[1].First.Cells.Take(9).Select(i =>
+//                            i.ToString()).ToArray())}] [{string.Join(",",
+//                            stats[1].Last.Cells.Take(9).Select(i =>
+//                            i.ToString()).ToArray())}]");
 //                        }
 
 //                    }
@@ -335,14 +346,22 @@
 //                }
 //                else
 //                {
-//                    if (population.BestChromosome is MultipleChromosome multiChromosome)
+//                    if (population.BestChromosome is MultipleChromosome
+//                    multiChromosome)
 //                    {
-//                        var orderedSubChromosomes = multiChromosome.Chromosomes.OrderByDescending(c => c.Fitness).ToList();
-//                        bestChromosome = (ISudokuChromosome)orderedSubChromosomes.First();
-//                        var worstChromosome = (ISudokuChromosome)orderedSubChromosomes.Last();
-//                        sudokuBoardToDraw = bestChromosome.GetSudokus().First();
-//                        Context.WriteText($"Best Chromosome Best Sub-Fitness: {((IChromosome)bestChromosome).Fitness}");
-//                        Context.WriteText($"Best Chromosome Worst Sub-Fitness:: {((IChromosome)worstChromosome).Fitness}");
+//                        var orderedSubChromosomes =
+//                        multiChromosome.Chromosomes.OrderByDescending(c =>
+//                        c.Fitness).ToList(); bestChromosome =
+//                        (ISudokuChromosome)orderedSubChromosomes.First(); var
+//                        worstChromosome =
+//                        (ISudokuChromosome)orderedSubChromosomes.Last();
+//                        sudokuBoardToDraw =
+//                        bestChromosome.GetSudokus().First();
+//                        Context.WriteText($"Best Chromosome Best Sub-Fitness:
+//                        {((IChromosome)bestChromosome).Fitness}");
+//                        Context.WriteText($"Best Chromosome Worst
+//                        Sub-Fitness::
+//                        {((IChromosome)worstChromosome).Fitness}");
 //                    }
 
 //                }
@@ -353,16 +372,18 @@
 //            }
 //            if (sudokuBoardToDraw != null)
 //            {
-//                layout.SetMarkup($"<span color='black'>{sudokuBoardToDraw}</span>");
+//                layout.SetMarkup($"<span
+//                color='black'>{sudokuBoardToDraw}</span>");
 //                buffer.DrawLayout(Context.GC, 50, 120, layout);
 //            }
 //        }
 
-
 //        public override void Reset()
 //        {
-//            // Quick hack to force visibility not taken into account at creation (GTK#/MainWidow bug?)
-//            _nbPermsHBox.Visible = _ChromosomeType == nameof(SudokuChromosomeType.RandomRowsPermutations);
+//            // Quick hack to force visibility not taken into account at
+//            creation (GTK#/MainWidow bug?) _nbPermsHBox.Visible =
+//            _ChromosomeType ==
+//            nameof(SudokuChromosomeType.RandomRowsPermutations);
 //            _nbChromosomesHBox.Visible = _multipleChromosome;
 //        }
 

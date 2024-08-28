@@ -2,36 +2,36 @@
 
 namespace GeneticSharp.Runner.MauiApp.ViewModels
 {
-    [QueryProperty("OperatorInfo", "OperatorInfo")]    
-    public partial class PropertyEditorViewModel : ObservableObject
+[QueryProperty("OperatorInfo", "OperatorInfo")]
+public partial class PropertyEditorViewModel : ObservableObject
+{
+    OperatorInfo _operatorInfo;
+
+    public PropertyEditorViewModel()
     {
-        OperatorInfo _operatorInfo;
+    }
 
-        public PropertyEditorViewModel()
-        {               
-        }
+    [ObservableProperty]
+    string objectInterfaceName;
 
-        [ObservableProperty]
-        string objectInterfaceName;
+    [ObservableProperty]
+    string objectTypeName;
 
-        [ObservableProperty]
-        string objectTypeName;
-
-        public OperatorInfo OperatorInfo
+    public OperatorInfo OperatorInfo
+    {
+        get => _operatorInfo;
+        set
         {
-            get => _operatorInfo;
-            set
+            if(value != _operatorInfo)
             {
-                if(value != _operatorInfo)
-                {
-                    _operatorInfo = value;
-                    ObjectInterfaceName = value.InterfaceName;
-                    ObjectTypeName = value.ImplementationName;                   
-                }
+                _operatorInfo = value;
+                ObjectInterfaceName = value.InterfaceName;
+                ObjectTypeName = value.ImplementationName;
             }
         }
+    }
 
-        public string Title => $"{ObjectInterfaceName}: {objectTypeName}";
-        public bool IsReady => objectInterfaceName != null && objectTypeName != null;                  
-    }   
+    public string Title => $"{ObjectInterfaceName}: {objectTypeName}";
+    public bool IsReady => objectInterfaceName != null && objectTypeName != null;
+}
 }

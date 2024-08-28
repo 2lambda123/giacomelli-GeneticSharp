@@ -19,7 +19,7 @@
 //        #region Constructors
 //        public PropertyEditor(Type objectType, object objectInstance)
 //        {
- 
+
 //            m_objectType = objectType;
 
 //            if (objectInstance == null || objectInstance.GetType() != objectType)
@@ -32,7 +32,7 @@
 //            }
 
 //            m_widgetMap = new Dictionary<PropertyInfo, IView>();
-//            BindToWidget();   
+//            BindToWidget();
 //        }
 //        #endregion
 
@@ -52,7 +52,7 @@
 //        }
 
 //        void BindToWidget()
-//        {            
+//        {
 //            foreach (var p in GetObjectProperties(m_objectType))
 //            {
 //                var hbox = new HorizontalStackLayout();

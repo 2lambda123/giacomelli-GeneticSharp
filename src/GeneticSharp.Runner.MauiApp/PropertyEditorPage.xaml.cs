@@ -5,23 +5,23 @@ namespace GeneticSharp.Runner.MauiApp;
 
 public partial class PropertyEditorPage : ContentPage
 {
-	PropertyEditorViewModel _vm;    
+    PropertyEditorViewModel _vm;
     Dictionary<PropertyInfo, IView> _widgetMap;
 
 
     public PropertyEditorPage(PropertyEditorViewModel vm)
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         _widgetMap = new Dictionary<PropertyInfo, IView>();
 
         _vm = vm;
-		_vm.PropertyChanged += (s, e) => 
-		{
+        _vm.PropertyChanged += (s, e) =>
+        {
             if (_vm.IsReady)
                 BindToView();
-        };        
+        };
 
-        BindingContext = vm;        
+        BindingContext = vm;
     }
 
     protected override bool OnBackButtonPressed()
@@ -40,12 +40,14 @@ public partial class PropertyEditorPage : ContentPage
             var value = p.GetValue(_vm.OperatorInfo.Instance, null);
 
             var label = new Label { Text = $"{p.Name}: {value:000}" };
-            hbox.Add(label);            
+            hbox.Add(label);
             IView input = null;
 
             if (p.PropertyType == typeof(int))
             {
-                var stepper = new Stepper(0, 100, 1, 1) {  WidthRequest = 100 };
+                var stepper = new Stepper(0, 100, 1, 1) {
+                    WidthRequest = 100
+                };
                 stepper.ValueChanged += (sender, e) => label.Text = $"{p.Name}: {e.NewValue:000}";
                 stepper.Value = Convert.ToDouble(value);
 

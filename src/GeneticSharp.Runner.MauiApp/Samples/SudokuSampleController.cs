@@ -151,7 +151,7 @@
 //            };
 //            fileHBox.Add(selectImageButton);
 //            var helpImageButton = new Button { Label = "?" };
-            
+
 //            helpImageButton.Clicked += delegate
 //            {
 //                var msg = new MessageDialog(
